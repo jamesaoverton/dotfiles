@@ -1,0 +1,8 @@
+[user]         
+  name = James A. Overton 
+  email = james@overton.ca
+[alias]                  
+  co = checkout        
+  ci = commit
+  st = status     
+  wdiff = diff --color-words  
