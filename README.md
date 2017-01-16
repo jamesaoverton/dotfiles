@@ -11,3 +11,9 @@ The `default.nix` file configures [Nix](https://nixos.org/nix/) with a set of to
 2. run `nix-env -i ...` with the list of packages to install them into the default environment
 
 To use the [NeoVim](https://neovim.io) configuration in `.config/nvim/init.vim` you first have to install [vim-plug](https://github.com/junegunn/vim-plug) and then run `:PlugInstall`.
+
+To use the Nix version of Bash on macOS, first install it, then add it to `/etc/shells`, then use `chsh`:
+
+    nix-env -iA nixpkgs bashInteractive
+    sudo echo "/Users/james/.nix-profile/bin/bash" >> /etc/shells
+    chsh -s /Users/james/.nix-profile/bin/bash
