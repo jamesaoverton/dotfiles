@@ -92,6 +92,13 @@ Plug 'airblade/vim-gitgutter'        " git status
 Plug 'altercation/vim-colors-solarized'
 Plug 'jamesaoverton/vim-airline'     " fancy status line
 
+" Clojure
+Plug 'tpope/vim-fireplace',        { 'for': 'clojure' } " REPL
+Plug 'guns/vim-clojure-static',    { 'for': 'clojure' } " static highlighting
+Plug 'guns/vim-clojure-highlight', { 'for': 'clojure' } " dynamic highlighting
+Plug 'venantius/vim-cljfmt',       { 'for': 'clojure' } " enforce cljfmt
+Plug 'bhurlow/vim-parinfer',       { 'for': 'clojure' } " parinfer
+
 " Filetypes
 Plug 'neapel/vim-n3-syntax'          " rdf, turtle, etc.
 
@@ -135,6 +142,16 @@ colorscheme solarized
 " https://github.com/bling/vim-airline
 let g:airline_powerline_fonts = 1
 
+" vim-fireplace Eval
+" https://github.com/tpope/vim-fireplace
+nnoremap <C-e> :Eval<cr>
+
+" vim-clojure-static
+" https://github.com/guns/vim-clojure-static
+" Use hanging alignment for multiline strings
+let g:clojure_align_multiline_strings = 1
+" Align subforms to make cljfmt happier
+let g:clojure_align_subforms = 1
 
 " # Filetypes
 
