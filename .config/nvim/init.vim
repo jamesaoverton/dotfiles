@@ -65,7 +65,7 @@ nnoremap <leader>h :nohlsearch<cr>
 nnoremap <leader>m :setf markdown<cr>
 
 " Toogle paste mode
-nnoremap <leader>p :set paste!<cr>
+nnoremap <leader>p :set paste!<cr>:GitGutterToggle<cr>
 
 " Close buffer without changing window
 nnoremap <leader>q :Bdelete<cr>
@@ -175,11 +175,14 @@ nnoremap <c-t> :call RunBufferTests()<cr>
 
 " # Filetypes
 
+" Terminals
+autocmd TermOpen * setlocal nospell
+
 " Text files
-autocmd BufRead,BufNewFile *.{txt,tex,md,mdown,mkd,mkdn,markdown,mdwn} set spell
+autocmd BufRead,BufNewFile *.{txt,tex,md,mdown,mkd,mkdn,markdown,mdwn} setlocal spell
 
 " Makefiles
-autocmd FileType make set list noexpandtab tabstop=4 shiftwidth=4 softtabstop=0
+autocmd FileType make setlocal list noexpandtab tabstop=4 shiftwidth=4 softtabstop=0
 
 " Turtle files
-autocmd BufNewFile,BufRead *.ttl set filetype=n3
+autocmd BufNewFile,BufRead *.ttl setlocal filetype=n3
