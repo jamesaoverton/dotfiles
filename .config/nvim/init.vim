@@ -52,6 +52,12 @@ tnoremap <esc> <c-\><c-n>
 " Use space for leader
 let mapleader = "\<space>"
 
+" Easier navigation between split windows.
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l
+
 " Turn off higlight search
 nnoremap <leader>h :nohlsearch<cr>
 
@@ -119,6 +125,7 @@ let g:gitgutter_sign_column_always = 1
 " https://github.com/kien/ctrlp.vim
 " http://blog.patspam.com/2014/super-fast-ctrlp
 nnoremap <NUL> :CtrlPBuffer<cr>
+nnoremap <c-space> :CtrlPBuffer<cr>
 nnoremap <leader>f :CtrlP<cr>
 nnoremap <leader>b :CtrlPBuffer<cr>
 nnoremap <leader>r :CtrlPMRU<cr>
@@ -152,6 +159,19 @@ nnoremap <C-e> :Eval<cr>
 let g:clojure_align_multiline_strings = 1
 " Align subforms to make cljfmt happier
 let g:clojure_align_subforms = 1
+
+" # Functions
+" https://vimrcfu.com/snippet/31
+function! RunBufferTests()
+    let ns = fireplace#ns()
+    let ns = substitute(ns, '-spec$', '', '')
+    if ns !~ '-test$'
+        let ns = ns . "-test"
+    endif
+    silent :Require
+    exe "RunTests " . ns
+endfunction
+nnoremap <c-t> :call RunBufferTests()<cr>
 
 " # Filetypes
 
