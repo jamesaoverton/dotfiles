@@ -119,7 +119,7 @@ call plug#end()
 " vim-gitgutter
 " https://github.com/airblade/vim-gitgutter
 nnoremap <c-g> :GitGutterToggle<cr>
-let g:gitgutter_sign_column_always = 1
+set signcolumn=yes
 
 " CtrlP fuzzy file searching
 " https://github.com/kien/ctrlp.vim
