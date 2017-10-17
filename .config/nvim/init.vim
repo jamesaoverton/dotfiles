@@ -23,9 +23,6 @@ set undodir=~/.local/share/nvim/undo
 set backupdir=~/.local/share/nvim/backup
 set undolevels=1000
 
-" Allow all mouse actions in terminal Vim.
-set mouse=a
-
 " Wrap Lines
 set wrap
 set linebreak
