@@ -29,7 +29,7 @@ set linebreak
 set nolist
 set textwidth=0
 set wrapmargin=0
-set scrolloff=3 " minimum lines to keep above an below cursor
+set scrolloff=3 " minimum lines to keep above and below cursor
 
 " Searching
 set ignorecase
