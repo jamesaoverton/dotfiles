@@ -73,6 +73,9 @@ nnoremap <leader>q :Bdelete<cr>
 " Alternative to write
 nnoremap <leader>w :w<cr>
 
+" Close all other splits
+nnoremap <leader>o :only<cr>
+
 
 " # Plugins
 "
