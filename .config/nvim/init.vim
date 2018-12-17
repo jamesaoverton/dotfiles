@@ -92,6 +92,7 @@ Plug 'tpope/vim-unimpaired'          " navigation mappings
 Plug 'editorconfig/editorconfig-vim' " respect .editorconfig files
 Plug 'ctrlpvim/ctrlp.vim'            " fuzzy file and buffer search
 Plug 'moll/vim-bbye'                 " better buffer controls
+Plug 'kshenoy/vim-signature'         " show marks in signs column
 
 " Version Control
 Plug 'tpope/vim-fugitive'            " git integration

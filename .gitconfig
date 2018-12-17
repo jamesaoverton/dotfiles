@@ -6,3 +6,5 @@
   ci = commit
   st = status     
   wdiff = diff --color-words  
+[push]
+  default = simple
