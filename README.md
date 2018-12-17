@@ -31,8 +31,8 @@ nix-env -i $(grep ^mosh README.md)
 To use the Nix version of Bash on macOS, first install it, then add it to `/etc/shells`, then use `chsh`:
 
 ```
-nix-env -iA nixpkgs bashInteractive
-sudo echo "/Users/james/.nix-profile/bin/bash" >> /etc/shells
+nix-env -iA nixpkgs.bashInteractive
+sudo sh -c "echo /Users/james/.nix-profile/bin/bash >> /etc/shells"
 chsh -s /Users/james/.nix-profile/bin/bash
 ```
 
