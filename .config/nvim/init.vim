@@ -64,8 +64,8 @@ nnoremap <leader>h :nohlsearch<cr>
 " Enter Markdown mode
 nnoremap <leader>m :setf markdown<cr>
 
-" Toogle paste mode
-nnoremap <leader>p :set paste!<cr>:GitGutterToggle<cr>
+" Toggle paste mode
+nnoremap <leader>p :set paste!<cr>
 
 " Close buffer without changing window
 nnoremap <leader>q :Bdelete<cr>
@@ -156,6 +156,7 @@ let g:airline_powerline_fonts = 1
 " vim-fireplace Eval
 " https://github.com/tpope/vim-fireplace
 nnoremap <C-e> :Eval<cr>
+nnoremap <leader>r :w<cr>:Require!<cr>
 
 " vim-clojure-static
 " https://github.com/guns/vim-clojure-static
@@ -175,7 +176,16 @@ function! RunBufferTests()
     silent :Require
     exe "RunTests " . ns
 endfunction
-nnoremap <c-t> :call RunBufferTests()<cr>
+nnoremap <leader>t :call RunBufferTests()<cr>
+
+function! ToggleSignColumn()
+  if &signcolumn == 'yes'
+    set signcolumn=no
+  else
+    set signcolumn=yes
+  endif
+endfunction
+nnoremap <leader>s :call ToggleSignColumn()<cr>
 
 " # Filetypes
 
