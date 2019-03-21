@@ -26,6 +26,15 @@ Or you can install them into your user environment like so:
 nix-env -i $(grep ^mosh README.md)
 ```
 
+## Nix on macOS
+
+When using Nix on macOS in a multi-user installation the channel is controlled by the `root` user, so use `sudo -i` to make sure that `root`'s shell profile is loaded:
+
+```
+sudo -i nix-channel --list
+sudo -i nix-channel --update
+```
+
 ## Bash
 
 To use the Nix version of Bash on macOS, first install it, then add it to `/etc/shells`, then use `chsh`:
