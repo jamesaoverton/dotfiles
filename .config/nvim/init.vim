@@ -168,15 +168,30 @@ let g:clojure_align_subforms = 1
 " # Functions
 " https://vimrcfu.com/snippet/31
 function! RunBufferTests()
-    let ns = fireplace#ns()
-    let ns = substitute(ns, '-spec$', '', '')
-    if ns !~ '-test$'
-        let ns = ns . "-test"
-    endif
-    silent :Require
-    exe "RunTests " . ns
+  let ns = fireplace#ns()
+  let ns = substitute(ns, '-spec$', '', '')
+  if ns !~ '-test$'
+    let ns = ns . "-test"
+  endif
+  silent :Require
+  exe "RunTests " . ns
 endfunction
-nnoremap <leader>t :call RunBufferTests()<cr>
+"nnoremap <leader>t :call RunBufferTests()<cr>
+
+" Run command in buffer 1
+let g:test = "make test"
+function! RunCommand()
+  if bufwinnr(1) == -1
+    botright 10split
+    buffer 1
+  endif
+  exec bufwinnr(1) . "wincmd w"
+  call jobsend(b:terminal_job_id, g:test . "\n")
+  wincmd p
+endfunction
+nnoremap <leader>t :call RunCommand()<cr>
+"nnoremap <leader>y :source ~/.config/nvim/init.vim<cr>
+"let g:test = "ls -lah"
 
 function! ToggleSignColumn()
   if &signcolumn == 'yes'
@@ -189,6 +204,10 @@ nnoremap <leader>s :call ToggleSignColumn()<cr>
 
 " # Filetypes
 
+" Journal files
+autocmd BufNewFile ~/Documents/Writing/Journal/*/*/*.txt execute "0read !~/Repositories/local/infrastructure/carnap/journal.py" expand('%:t:r')
+autocmd BufRead,BufNewFile ~/Documents/Writing/Journal/*/*/*.txt setlocal filetype=markdown
+
 " Terminals
 autocmd TermOpen * setlocal nospell
 
@@ -200,3 +219,4 @@ autocmd FileType make setlocal list noexpandtab tabstop=4 shiftwidth=4 softtabst
 
 " Turtle files
 autocmd BufNewFile,BufRead *.ttl setlocal filetype=n3
+
