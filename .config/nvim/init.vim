@@ -193,6 +193,31 @@ nnoremap <leader>t :call RunCommand()<cr>
 "nnoremap <leader>y :source ~/.config/nvim/init.vim<cr>
 "let g:test = "ls -lah"
 
+" https://stackoverflow.com/a/6271254
+function! s:get_visual_selection()
+  " Why is this not a built-in Vim script function?!
+  let [line_start, column_start] = getpos("'<")[1:2]
+  let [line_end, column_end] = getpos("'>")[1:2]
+  let lines = getline(line_start, line_end)
+  if len(lines) == 0
+    return ''
+  endif
+  let lines[-1] = lines[-1][: column_end - (&selection == 'inclusive' ? 1 : 2)]
+  let lines[0] = lines[0][column_start - 1:]
+  return join(lines, "\n")
+endfunction
+
+" Send visual selection to draft-email
+function! Email() range
+  if !exists("$IMAP_PASSWORD")
+    let g:imap_password=input("IMAP Password? ")
+    let $IMAP_PASSWORD=g:imap_password
+  endif
+  echo system("draft-email", s:get_visual_selection())
+endfunction
+xnoremap e :call Email()<cr>
+
+
 function! ToggleSignColumn()
   if &signcolumn == 'yes'
     set signcolumn=no
