@@ -165,7 +165,10 @@ let g:clojure_align_multiline_strings = 1
 " Align subforms to make cljfmt happier
 let g:clojure_align_subforms = 1
 
+
 " # Functions
+
+" Run Clojure tests for buffer
 " https://vimrcfu.com/snippet/31
 function! RunBufferTests()
   let ns = fireplace#ns()
@@ -178,7 +181,7 @@ function! RunBufferTests()
 endfunction
 "nnoremap <leader>t :call RunBufferTests()<cr>
 
-" Run command in buffer 1
+" Run command in buffer 1, maybe opening a split
 let g:test = "make test"
 function! RunCommand()
   if bufwinnr(1) == -1
@@ -190,12 +193,11 @@ function! RunCommand()
   wincmd p
 endfunction
 nnoremap <leader>t :call RunCommand()<cr>
-"nnoremap <leader>y :source ~/.config/nvim/init.vim<cr>
-"let g:test = "ls -lah"
 
+" Get the visual selection
+" Why is this not a built-in Vim script function?!
 " https://stackoverflow.com/a/6271254
 function! s:get_visual_selection()
-  " Why is this not a built-in Vim script function?!
   let [line_start, column_start] = getpos("'<")[1:2]
   let [line_end, column_end] = getpos("'>")[1:2]
   let lines = getline(line_start, line_end)
@@ -217,7 +219,7 @@ function! Email() range
 endfunction
 xnoremap e :call Email()<cr>
 
-
+" Toggle the sign column
 function! ToggleSignColumn()
   if &signcolumn == 'yes'
     set signcolumn=no
@@ -226,6 +228,7 @@ function! ToggleSignColumn()
   endif
 endfunction
 nnoremap <leader>s :call ToggleSignColumn()<cr>
+
 
 " # Filetypes
 
