@@ -79,6 +79,9 @@ nnoremap <leader>o :only<cr>
 " Reload source
 nnoremap <leader>y :source ~/.config/nvim/init.vim<cr>
 
+" Ignore <c-space>
+inoremap <c-space> <space>
+
 
 " # Plugins
 "
