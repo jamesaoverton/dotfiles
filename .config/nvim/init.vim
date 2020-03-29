@@ -76,6 +76,9 @@ nnoremap <leader>w :w<cr>
 " Close all other splits
 nnoremap <leader>o :only<cr>
 
+" Reload source
+nnoremap <leader>y :source ~/.config/nvim/init.vim<cr>
+
 
 " # Plugins
 "
@@ -229,12 +232,46 @@ function! ToggleSignColumn()
 endfunction
 nnoremap <leader>s :call ToggleSignColumn()<cr>
 
+" Set journal marks
+function! SetJournalMarks()
+  normal gg
+  keeppatterns /TIME
+  normal dd
+  mark t
+  keeppatterns /DONE
+  normal dd
+  mark d
+  keeppatterns /JOURNAL
+  normal dd
+  mark j
+  normal 't
+  SignatureRefresh
+endfunction
+
+" Set global journal marks
+function! SetGlobalJournalMarks()
+  let cursor_pos = getpos(".")
+  normal 't
+  mark T
+  normal 'd
+  mark D
+  normal 'j
+  mark J
+  SignatureRefresh
+  call setpos('.', cursor_pos)
+endfunction
+nnoremap <leader>j :call SetGlobalJournalMarks()<cr>
+
 
 " # Filetypes
 
 " Journal files
-autocmd BufNewFile ~/Documents/Writing/Journal/*/*/*.txt execute "0read !~/Repositories/local/infrastructure/carnap/journal.py" expand('%:t:r')
-autocmd BufRead,BufNewFile ~/Documents/Writing/Journal/*/*/*.txt setlocal filetype=markdown
+augroup journal
+  autocmd!
+  autocmd BufNewFile ~/Documents/Writing/Journal/*/*/*.txt execute "0read !~/Repositories/local/infrastructure/carnap/journal.py" expand('%:t:r')
+  autocmd BufNewFile ~/Documents/Writing/Journal/*/*/*.txt call SetJournalMarks()
+  autocmd BufRead,BufNewFile ~/Documents/Writing/Journal/*/*/*.txt setlocal filetype=markdown
+augroup END
 
 " Terminals
 autocmd TermOpen * setlocal nospell
