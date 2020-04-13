@@ -2,6 +2,7 @@
   name = James A. Overton 
   email = james@overton.ca
 [alias]                  
+  amend = commit --amend --no-edit
   co = checkout        
   ci = commit
   st = status     
