@@ -15,9 +15,6 @@ set hidden
 " Spell Checking
 set spelllang=en_ca
 
-" Y yanks to end of line, similar to D and C
-noremap Y yg_
-
 " Backup and Undo
 set undodir=~/.local/share/nvim/undo
 set backupdir=~/.local/share/nvim/backup
@@ -42,45 +39,6 @@ set expandtab
 
 " Cursor
 set guicursor=
-
-
-" # Mappings
-
-" NeoVim Terminal
-tnoremap <esc> <c-\><c-n>
-
-" Use space for leader
-let mapleader = "\<space>"
-
-" Easier navigation between split windows.
-nnoremap <c-j> <c-w>j
-nnoremap <c-k> <c-w>k
-nnoremap <c-h> <c-w>h
-nnoremap <c-l> <c-w>l
-
-" Turn off higlight search
-nnoremap <leader>h :nohlsearch<cr>
-
-" Enter Markdown mode
-nnoremap <leader>m :setf markdown<cr>
-
-" Toggle paste mode
-nnoremap <leader>p :set paste!<cr>
-
-" Close buffer without changing window
-nnoremap <leader>q :Bdelete<cr>
-
-" Alternative to write
-nnoremap <leader>w :w<cr>
-
-" Close all other splits
-nnoremap <leader>o :only<cr>
-
-" Reload source
-nnoremap <leader>y :source ~/.config/nvim/init.vim<cr>
-
-" Ignore <c-space>
-inoremap <c-space> <space>
 
 
 " # Plugins
@@ -128,17 +86,11 @@ call plug#end()
 
 " vim-gitgutter
 " https://github.com/airblade/vim-gitgutter
-nnoremap <c-g> :GitGutterToggle<cr>
 set signcolumn=yes
 
 " CtrlP fuzzy file searching
-" https://github.com/kien/ctrlp.vim
+" https://github.com/ctrlp/ctrlp.vim
 " http://blog.patspam.com/2014/super-fast-ctrlp
-nnoremap <NUL> :CtrlPBuffer<cr>
-nnoremap <c-space> :CtrlPBuffer<cr>
-nnoremap <leader>f :CtrlP<cr>
-nnoremap <leader>b :CtrlPBuffer<cr>
-nnoremap <leader>r :CtrlPMRU<cr>
 let g:ctrlp_switch_buffer = ''
 let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
   \ --ignore .git
@@ -158,11 +110,6 @@ colorscheme solarized
 " Airline status line
 " https://github.com/bling/vim-airline
 let g:airline_powerline_fonts = 1
-
-" vim-fireplace Eval
-" https://github.com/tpope/vim-fireplace
-nnoremap <C-e> :Eval<cr>
-nnoremap <leader>r :w<cr>:Require!<cr>
 
 " vim-clojure-static
 " https://github.com/guns/vim-clojure-static
@@ -185,7 +132,6 @@ function! RunBufferTests()
   silent :Require
   exe "RunTests " . ns
 endfunction
-"nnoremap <leader>t :call RunBufferTests()<cr>
 
 " Run command in buffer 1, maybe opening a split
 let g:test = "make test"
@@ -198,7 +144,6 @@ function! RunCommand()
   call jobsend(b:terminal_job_id, g:test . "\n")
   wincmd p
 endfunction
-nnoremap <leader>t :call RunCommand()<cr>
 
 " Get the visual selection
 " Why is this not a built-in Vim script function?!
@@ -223,7 +168,6 @@ function! Email() range
   endif
   echo system("draft-email", s:get_visual_selection())
 endfunction
-xnoremap e :call Email()<cr>
 
 " Toggle the sign column
 function! ToggleSignColumn()
@@ -233,10 +177,10 @@ function! ToggleSignColumn()
     set signcolumn=yes
   endif
 endfunction
-nnoremap <leader>s :call ToggleSignColumn()<cr>
 
 " Set journal marks
 function! SetJournalMarks()
+  let @j=@"
   normal gg
   keeppatterns /TIME
   normal dd
@@ -249,6 +193,7 @@ function! SetJournalMarks()
   mark j
   normal 't
   SignatureRefresh
+  let @"=@j
 endfunction
 
 " Set global journal marks
@@ -263,7 +208,6 @@ function! SetGlobalJournalMarks()
   SignatureRefresh
   call setpos('.', cursor_pos)
 endfunction
-nnoremap <leader>j :call SetGlobalJournalMarks()<cr>
 
 
 " # Filetypes
@@ -271,7 +215,7 @@ nnoremap <leader>j :call SetGlobalJournalMarks()<cr>
 " Journal files
 augroup journal
   autocmd!
-  autocmd BufNewFile ~/Documents/Writing/Journal/*/*/*.txt execute "0read !~/Repositories/local/infrastructure/carnap/journal.py" expand('%:t:r')
+  autocmd BufNewFile ~/Documents/Writing/Journal/*/*/*.txt execute "0read !~/Repositories/local/automation/carnap/journal.py" expand('%:t:r')
   autocmd BufNewFile ~/Documents/Writing/Journal/*/*/*.txt call SetJournalMarks()
   autocmd BufRead,BufNewFile ~/Documents/Writing/Journal/*/*/*.txt setlocal filetype=markdown
 augroup END
@@ -288,3 +232,38 @@ autocmd FileType make setlocal list noexpandtab tabstop=4 shiftwidth=4 softtabst
 " Turtle files
 autocmd BufNewFile,BufRead *.ttl setlocal filetype=n3
 
+
+" # Mappings
+" Use space for leader
+let mapleader = "\<space>"
+
+noremap Y yg_ " Y yanks to end of line, similar to D and C
+
+inoremap <c-j> <esc><c-w>w
+inoremap <c-space> <space>
+
+nnoremap <c-e> :Eval<cr>
+nnoremap <c-j> <c-w>w
+nnoremap <c-k> :CtrlPBuffer<cr>
+nnoremap <leader>1 :only<cr>
+nnoremap <leader>2 :only<cr>:vsplit<cr>:b#<cr>
+nnoremap <leader>3 :only<cr>:vsplit<cr>:b1<cr>:split<cr>:b#<cr>
+nnoremap <leader>c :b1<cr>
+nnoremap <leader>f :CtrlP<cr>
+nnoremap <leader>h :nohlsearch<cr>
+nnoremap <leader>j :call SetGlobalJournalMarks()<cr>
+nnoremap <leader>k :b#<cr>
+nnoremap <leader>m :setf markdown<cr>
+nnoremap <leader>p :set paste!<cr>
+nnoremap <leader>q :Bwipeout<cr>
+nnoremap <leader>r :w<cr>:Require!<cr>
+nnoremap <leader>s :call ToggleSignColumn()<cr>
+nnoremap <leader>t :call RunCommand()<cr>
+nnoremap <leader>w :w<cr>
+nnoremap <leader>d 0rX<esc>j
+nnoremap <leader>y :source ~/.config/nvim/init.vim<cr>
+
+tnoremap <c-j> <c-\><c-n><c-w>w
+tnoremap <esc> <c-\><c-n>
+
+xnoremap <leader>e :call Email()<cr>
