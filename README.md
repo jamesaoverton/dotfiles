@@ -49,3 +49,6 @@ chsh -s /Users/james/.nix-profile/bin/bash
 
 To use the [NeoVim](https://neovim.io) configuration in `.config/nvim/init.vim` you first have to install [vim-plug](https://github.com/junegunn/vim-plug) and then run `:PlugInstall`.
 
+## Tmux
+
+To use the [tmux](https://github.com/tmux/tmux/wiki) configuration in `.config/tmux/tmux.conf` you first have to install [tpm](https://github.com/tmux-plugins/tpm).
