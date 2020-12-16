@@ -1,0 +1,11 @@
+[nix_shell]
+disabled = true
+
+[python]
+symbol = ""
+
+[java]
+disabled = true
+
+[nodejs]
+symbol = ""
