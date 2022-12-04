@@ -1,17 +1,9 @@
-[user]         
-  name = James A. Overton 
-  email = james@overton.ca
-[alias]                  
-  amend = commit --amend --no-edit
-  co = checkout        
-  ci = commit
-  st = status     
-  wdiff = diff --color-words  
+[user]
+	name = James A. Overton
+	email = james@overton.ca
 [push]
-  default = simple
+	default = simple
 [credential "https://github.com"]
-	helper = 
 	helper = !/nix/store/gmmld32w70ng0cx9ic9wrvvqxs1636q8-gh-2.20.2/bin/gh auth git-credential
 [credential "https://gist.github.com"]
-	helper = 
 	helper = !/nix/store/gmmld32w70ng0cx9ic9wrvvqxs1636q8-gh-2.20.2/bin/gh auth git-credential
