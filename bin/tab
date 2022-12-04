@@ -1,6 +1,9 @@
 #!/bin/sh -e
 
-DIR="$1"
-NAME=$(basename $1)
-NAME=$(cut -d. -f1 <<< "$NAME")
-zellij action new-tab --name "$NAME" --cwd "$DIR" --layout ~/.config/zellij/layout.kdl
+DIR="${1:?directory required}"
+NAME=$(cut -d. -f1 << EOF
+$(basename "$1")
+EOF
+)
+LAYOUT="${HOME}/.config/zellij/project-tab.kdl"
+zellij action new-tab --name "$NAME" --cwd "$DIR" --layout "$LAYOUT"
