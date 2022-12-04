@@ -1,0 +1,22 @@
+# https://github.com/helix-editor/helix/wiki/How-to-install-the-default-language-servers
+
+# https://github.com/helix-editor/helix/issues/3897
+[[language]]
+name = "toml"
+config = {}
+
+[[language]]
+name = "rust"
+config = { checkOnSave = { command = "clippy " } }
+
+# https://github.com/helix-editor/helix/issues/1942#issuecomment-1086891320
+[[language]]
+name = "markdown"
+language-server = { command = "ltex-ls" }
+file-types = ["md", "markdown", "qmd"]
+scope = "source.markdown"
+roots = []
+config.ltext.completionEnabled = true
+config.ltex.language = "en-US"
+config.ltex.dictionary.en-CA = ["Knocean", "OMOP"]
+config.ltex.dictionary.en-US = ["Knocean", "OMOP"]

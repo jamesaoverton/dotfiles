@@ -1,0 +1,39 @@
+theme "base16"
+themes {
+  base16 {
+    // for dark vs light mode:
+	// invert black 0 and white 7
+	// invert bright black 8 and bright white 15
+    fg      4  // bottom tabs background
+    bg      7
+    black   15  // bar background and text
+    red     1
+    green   2  // active tab background
+    yellow  3
+    blue    4
+    magenta 5
+    cyan    6
+    white   0
+    gray    8
+    orange  9
+  }
+}
+default_mode "locked"
+keybinds {
+    locked {
+        bind "Ctrl h" { FocusPreviousPane; }
+        bind "Ctrl y" { ToggleFocusFullscreen; }
+        bind "Ctrl t" { SwitchToMode "Tab"; }
+    }
+	tab {
+		bind "1" { GoToTab 1; SwitchToMode "Locked"; }
+		bind "2" { GoToTab 2; SwitchToMode "Locked"; }
+		bind "3" { GoToTab 3; SwitchToMode "Locked"; }
+		bind "4" { GoToTab 4; SwitchToMode "Locked"; }
+		bind "5" { GoToTab 5; SwitchToMode "Locked"; }
+		bind "6" { GoToTab 6; SwitchToMode "Locked"; }
+		bind "7" { GoToTab 7; SwitchToMode "Locked"; }
+		bind "8" { GoToTab 8; SwitchToMode "Locked"; }
+		bind "9" { GoToTab 9; SwitchToMode "Locked"; }
+	}
+}

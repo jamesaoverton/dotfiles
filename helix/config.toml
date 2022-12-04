@@ -1,0 +1,7 @@
+theme = "base16-solarized-light"
+
+[editor]
+true-color = true
+
+[editor.cursor-shape]
+insert = "bar"

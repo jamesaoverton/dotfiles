@@ -9,3 +9,9 @@
   wdiff = diff --color-words  
 [push]
   default = simple
+[credential "https://github.com"]
+	helper = 
+	helper = !/nix/store/gmmld32w70ng0cx9ic9wrvvqxs1636q8-gh-2.20.2/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/nix/store/gmmld32w70ng0cx9ic9wrvvqxs1636q8-gh-2.20.2/bin/gh auth git-credential
