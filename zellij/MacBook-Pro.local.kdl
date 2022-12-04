@@ -22,8 +22,10 @@ layout {
   }
   tab name="dot" cwd="/Users/james/.config/" {
     pane split_direction="vertical" {
-      pane name="console"
-      pane name="editor" command="hx" focus=true
+      pane name="console" focus=true
+      pane name="editor" command="hx" {
+        args "README.md"
+      }
     }
   }
 }
