@@ -1,0 +1,6 @@
+#!/bin/sh
+
+DIR="$(pwd)/.config/zellij"
+zellij attach "$(hostname)" \
+|| zellij --session "$(hostname)" --layout "${DIR}/$(hostname).kdl" \
+|| zellij --session "$(hostname)" --layout "${DIR}/default.kdl"

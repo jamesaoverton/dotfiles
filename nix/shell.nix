@@ -26,9 +26,4 @@ pkgs.mkShell {
     tree
     visidata
   ];
-  shellHook = ''
-    zellij attach "$(hostname)" \
-    || zellij --session "$(hostname)" --layout "$(pwd)/.config/zellij/$(hostname).kdl" \
-    || zellij --session "$(hostname)" --layout "$(pwd)/.config/zellij/default.kdl"
-  '';
 }
