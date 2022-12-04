@@ -1,7 +1,8 @@
-theme = "base16-solarized-light"
+theme = "solarized-white"
 
 [editor]
 true-color = true
 
-[editor.cursor-shape]
-insert = "bar"
+[keys.normal.space]
+"w" = ":write"
+"q" = ":buffer-close"

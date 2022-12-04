@@ -9,6 +9,16 @@ config = {}
 name = "rust"
 config = { checkOnSave = { command = "clippy " } }
 
+# recent addition to default languages.toml
+[[language]]
+name = "kdl"
+scope = "source.kdl"
+file-types = ["kdl"]
+roots = []
+comment-token = "//"
+injection-regex = "kdl"
+indent = { tab-width = 2, unit = "  " }
+
 # https://github.com/helix-editor/helix/issues/1942#issuecomment-1086891320
 [[language]]
 name = "markdown"
