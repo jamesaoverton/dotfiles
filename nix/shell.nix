@@ -1,7 +1,6 @@
 with import <nixpkgs> {};
 
-stdenv.mkDerivation {
-  name = "home";
+pkgs.mkShell {
   buildInputs = [
     # terminal
     mosh

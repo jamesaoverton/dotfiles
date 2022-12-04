@@ -8,10 +8,10 @@ layout {
       plugin location="zellij:status-bar"
     }
   }
-  tab name="dot" cwd="~/.config/" {
+  tab name="dot" cwd=".config/" {
     pane split_direction="vertical" {
-      pane name="console"
-      pane name="editor" command="hx" focus=true {
+      pane name="console" focus=true
+      pane name="editor" command="hx" {
         args "README.md"
       }
     }
