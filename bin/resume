@@ -1,0 +1,4 @@
+#!/bin/sh -e
+
+#pkill -SIGUSR1 mosh-server
+nix-shell ~/.config/nix/shell.nix
