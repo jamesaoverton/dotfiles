@@ -1,0 +1,29 @@
+layout {
+  default_tab_template {
+    pane size=1 borderless=true {
+      plugin location="zellij:tab-bar"
+    }
+    children
+    pane size=2 borderless=true {
+      plugin location="zellij:status-bar"
+    }
+  }
+  tab name="notes" cwd="/Users/james/Documents/Writing/Journal/2022/" focus=true {
+    pane split_direction="vertical" {
+      pane name="report" command="report"
+      pane name="editor" command="hx" focus=true
+    }
+  }
+  tab name="auto" cwd="/Users/james/Repositories/local/automation/" {
+    pane split_direction="vertical" {
+      pane name="console" command="nix-shell"
+      pane name="editor" command="nix-shell" focus=true
+    }
+  }
+  tab name="dot" cwd="/Users/james/.config/" {
+    pane split_direction="vertical" {
+      pane name="console"
+      pane name="editor" command="hx" focus=true
+    }
+  }
+}
