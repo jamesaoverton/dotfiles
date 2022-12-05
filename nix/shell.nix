@@ -17,6 +17,7 @@ pkgs.mkShell {
     yaml-language-server
 
     # utilities
+    entr
     gh
     git
     htop
