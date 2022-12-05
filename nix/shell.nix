@@ -3,7 +3,6 @@ with import <nixpkgs> {};
 pkgs.mkShell {
   buildInputs = [
     # terminal
-    mosh
     starship
     zellij
 
