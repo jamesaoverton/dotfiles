@@ -1,6 +1,7 @@
 #!/bin/sh
 
 DIR="$(pwd)/.config/zellij"
+pkill -f "zellij attach"
 zellij attach "$(hostname)" \
 || zellij --session "$(hostname)" --layout "${DIR}/$(hostname).kdl" \
 || zellij --session "$(hostname)" --layout "${DIR}/default.kdl"
