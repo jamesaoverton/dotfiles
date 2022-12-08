@@ -22,7 +22,7 @@ pkgs.mkShell {
     git
     htop
     jq
-    sqlite
+    sqlite-interactive
     tree
     visidata
   ];
