@@ -11,7 +11,7 @@ pkgs.mkShell {
     helix
     nodePackages.bash-language-server
     ltex-ls
-    rnix-lsp
+    nil # nix language server
     shellcheck
     taplo
     yaml-language-server
