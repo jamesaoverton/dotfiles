@@ -8,10 +8,10 @@ layout {
       plugin location="zellij:status-bar"
     }
   }
-  tab name="notes" cwd="/Users/james/Documents/Writing/Journal/2022/" focus=true {
+  tab name="notes" cwd="/Users/james/Documents/Writing/Journal/2023/" focus=true {
     pane split_direction="vertical" {
       pane name="report" command="report"
-      pane name="editor" command="hx" focus=true
+      pane name="editor" command="kak" focus=true
     }
   }
   tab name="auto" cwd="/Users/james/Repositories/local/automation/" {
