@@ -52,3 +52,15 @@ To use the [NeoVim](https://neovim.io) configuration in `.config/nvim/init.vim` 
 ## Tmux
 
 To use the [tmux](https://github.com/tmux/tmux/wiki) configuration in `.config/tmux/tmux.conf` you first have to install [tpm](https://github.com/tmux-plugins/tpm).
+
+## Blink
+
+I use the Blink Shell app on my iPad.
+
+Settings > General > Keyboard > Shortcuts:
+In iPadOS 16.1 I had to turn this off,
+otherwise a floating menu for some keyboard options
+would appear and cause multiple resize events
+every time I switched tabs or apps.
+
+
