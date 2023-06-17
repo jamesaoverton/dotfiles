@@ -1,15 +1,19 @@
-// layout_file.kdl
-
 layout {
   pane size=1 borderless=true {
     plugin location="zellij:tab-bar"
   }
   pane split_direction="vertical" {
     pane {
-      pane name="build" command="nix-shell"
-      pane name="test" command="nix-shell"
+      pane name="build" command="/bin/sh" {
+        args "-c" "nix-shell ~/.config/nix/shell.nix --run nix-shell"
+      }
+      pane name="test" command="/bin/sh" {
+        args "-c" "nix-shell ~/.config/nix/shell.nix --run nix-shell"
+      }
     }
-    pane name="edit" command="nix-shell" focus=true
+    pane name="edit" command="/bin/sh" focus=true {
+        args "-c" "nix-shell ~/.config/nix/shell.nix --run nix-shell"
+    }
   }
   pane size=2 borderless=true {
     plugin location="zellij:status-bar"
