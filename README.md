@@ -1,29 +1,17 @@
 # James A. Overton's Dotfiles
 
-These [dotfiles](http://dotfiles.github.io) are managed using [vcsh](https://github.com/RichiH/vcsh) and available at <https://github.com/jamesaoverton/dotfiles>. To start using them, first install `vcsh`, then clone the files with:
+These [dotfiles](http://dotfiles.github.io) are available at <https://github.com/jamesaoverton/dotfiles> and meant to be installed into `~/.config`.
 
-    vcsh clone git@github.com:jamesaoverton/dotfiles dotfiles
+## Scripts
 
-Then you can use `vcsh dotfiles ...` to do pretty much anything that you would normally do with `git ...`.
+I usually `ssh` into the machine and then run `resume` (in `bin/resume`) to start or re-attach to a [Zellij](https://github.com/zellij-org/zellij) session. This requires installing a binary in `~/config/bin/zellij`.
 
 ## Nix Packages
 
-Here are some standard packages that I use with Nix and NixOS:
+I only install a few packages user-wide, then rely on `~/.config/nix/shell.nix` for the packages that I use in general, and project-specific `shell.nix` configurations.
 
 ```
-mosh tmux git vcsh neovim silver-searcher tree
-```
-
-You can install these into a temporary shell like so:
-
-```
-nix-shell -p $(grep ^mosh README.md)
-```
-
-Or you can install them into your user environment like so:
-
-```
-nix-env -i $(grep ^mosh README.md)
+nix-env -iA nixpkgs.starship
 ```
 
 ## Nix on macOS
@@ -44,14 +32,6 @@ nix-env -iA nixpkgs.bashInteractive
 sudo sh -c "echo /Users/james/.nix-profile/bin/bash >> /etc/shells"
 chsh -s /Users/james/.nix-profile/bin/bash
 ```
-
-## NeoVim
-
-To use the [NeoVim](https://neovim.io) configuration in `.config/nvim/init.vim` you first have to install [vim-plug](https://github.com/junegunn/vim-plug) and then run `:PlugInstall`.
-
-## Tmux
-
-To use the [tmux](https://github.com/tmux/tmux/wiki) configuration in `.config/tmux/tmux.conf` you first have to install [tpm](https://github.com/tmux-plugins/tpm).
 
 ## Blink
 

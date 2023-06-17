@@ -2,10 +2,6 @@ with import <nixpkgs> {};
 
 pkgs.mkShell {
   buildInputs = [
-    # terminal
-    starship
-    zellij
-
     # editor
     kakoune
     helix

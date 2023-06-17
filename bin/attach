@@ -1,6 +1,12 @@
 #!/bin/sh
 
 DIR="$(pwd)/.config/zellij"
+
+if ! command -v zellij > /dev/null; then
+  echo "Please install ~/.config/bin/zellij"
+  exit 1
+fi
+
 pkill -f "zellij attach"
 zellij attach "$(hostname)" \
 || zellij --session "$(hostname)" --layout "${DIR}/$(hostname).kdl" \

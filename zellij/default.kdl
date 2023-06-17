@@ -10,9 +10,11 @@ layout {
   }
   tab name="dot" cwd=".config/" {
     pane split_direction="vertical" {
-      pane name="console" focus=true
-      pane name="editor" command="hx" {
-        args "README.md"
+      pane name="console" command="nix-shell" focus=true {
+        args "nix/shell.nix"
+      }
+      pane name="editor" command="nix-shell" {
+        args "--run" "hx README.md" "nix/shell.nix"
       }
     }
   }
