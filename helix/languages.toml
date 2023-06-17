@@ -27,6 +27,6 @@ file-types = ["md", "markdown", "qmd"]
 scope = "source.markdown"
 roots = []
 config.ltext.completionEnabled = true
-config.ltex.language = "en-US"
+config.ltex.language = "en-CA"
 config.ltex.dictionary.en-CA = ["Knocean", "OMOP"]
 config.ltex.dictionary.en-US = ["Knocean", "OMOP"]
