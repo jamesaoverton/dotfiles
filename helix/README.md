@@ -26,7 +26,7 @@ Python is trickier than the other LSPs.
 Try something like:
 
 ```sh
-nix-shell -p python39Packages.ujson
+nix-shell -p python310Packages.ujson
 pip install 'python-lsp-server[all]'
 ```
 
