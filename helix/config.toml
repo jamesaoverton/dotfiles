@@ -3,6 +3,9 @@ theme = "solarized-white"
 [editor]
 true-color = true
 
+[editor.soft-wrap]
+enable = true
+
 [keys.normal.space]
 "w" = ":write"
 "q" = ":buffer-close"
