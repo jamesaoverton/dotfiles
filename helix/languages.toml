@@ -16,6 +16,3 @@ config.completionEnabled = true
 config.ltex.language = "en-CA"
 config.ltex.dictionary.en-CA = ["Boulderz", "LJI", "Knocean", "OMOP"]
 config.ltex.dictionary.en-US = ["Boulderz", "LJI", "Knocean", "OMOP"]
-tex.language = "en-CA"
-config.ltex.dictionary.en-CA = ["Knocean", "OMOP"]
-config.ltex.dictionary.en-US = ["Knocean", "OMOP"]
