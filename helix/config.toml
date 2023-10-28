@@ -3,9 +3,14 @@ theme = "solarized-white"
 [editor]
 true-color = true
 
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
 [editor.soft-wrap]
 enable = true
 
 [keys.normal.space]
-"w" = ":write"
-"q" = ":buffer-close"
+w = ":write"
+q = ":buffer-close"
