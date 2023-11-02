@@ -3,11 +3,12 @@ with import <nixpkgs> {};
 pkgs.mkShell {
   buildInputs = [
     # editor
-    kakoune
     helix
-    nodePackages.bash-language-server
     ltex-ls
     nil # nix language server
+    nodePackages.bash-language-server
+    nodePackages.typescript-language-server
+    nodePackages.vscode-langservers-extracted
     shellcheck
     taplo
     yaml-language-server
@@ -20,6 +21,6 @@ pkgs.mkShell {
     jq
     sqlite-interactive
     tree
-    visidata
+    # visidata
   ];
 }
