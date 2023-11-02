@@ -1,0 +1,70 @@
+#!/usr/bin/env bash
+
+# Check that everything is set up properly
+# for <https://github.com/jamesaoverton/dotfiles>.
+
+### Utility Functions
+#
+# Prompt for user confirmation.
+# Based on https://stackoverflow.com/a/3232082
+confirm() {
+  # call with a prompt string or use a default
+  echo "${1:-Are you sure?} [y/N] "
+  read -r response
+  case "$response" in
+    [yY][eE][sS]|[yY]) true ;;
+    *) exit 1 ;;
+  esac
+}
+
+fail() {
+    echo "ERROR: $1"
+    exit 1
+}
+
+
+### Check Setup
+
+if ! command -v nix-shell > /dev/null; then
+  echo "Nix package manager is not installed:"
+  echo "<https://nixos.org/download#nix-install-linux>"
+  confirm "Install Nix package manager?"
+  sh <(curl -L https://nixos.org/nix/install) --daemon
+fi
+
+if ! nix-env -q zellij > /dev/null 2>&1; then
+  echo "Zellij terminal multiplexer is not installed"
+  confirm "Install zellij with nix-env?"
+  nix-env -iA nixpkgs.zellij
+fi
+
+if ! nix-env -q starship > /dev/null 2>&1; then
+  echo "Starship terminal prompt utility is not installed"
+  confirm "Install starship with nix-env?"
+  nix-env -iA nixpkgs.starship
+fi
+
+if ! grep starship ~/.bashrc > /dev/null; then
+  echo "Starship not configured in '~/.bashrc'"
+  confirm "Append starship command to '~/.bashrc'?"
+  echo 'eval "$(starship init bash)"' >> ~/.bashrc
+fi
+
+if ! command -v attach > /dev/null; then
+  echo "'attach' shell script not found"
+  confirm "Add '${HOME}/.config/bin' to PATH in '~/.bash_profile'?"
+  echo "export PATH=\"\${PATH}:${HOME}/.config/bin\"" >> ~/.bash_profile
+fi
+
+if [ -z "${EDITOR}" ]; then
+  echo "EDITOR not set"
+  confirm "Set EDITOR=hx in '~/.bash_profile'?"
+  echo "export EDITOR=hx" >> ~/.bash_profile
+fi
+
+if [ -z "${VISUAL}" ]; then
+  echo "VISUAL not set"
+  confirm "Set VISUAL=\"\${EDITOR}\" in '~/.bash_profile'?"
+  echo "export VISUAL=\"\${EDITOR}\"" >> ~/.bash_profile
+fi
+
